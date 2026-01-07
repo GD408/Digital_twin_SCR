@@ -1,0 +1,202 @@
+{
+  "SKU001": {
+    "product": "Perfect Fitness Perfect Rip Deck",
+    "supplier": "SUP005",
+    "current_stock": 11256,
+    "safety_stock": 2814,
+    "lead_time_days": 2,
+    "daily_demand": 201,
+    "unit_cost": 59.99,
+    "revenue_per_unit": 162.07
+  },
+  "SKU002": {
+    "product": "Nike Men's Dri-FIT Victory Golf Polo",
+    "supplier": "SUP005",
+    "current_stock": 9116,
+    "safety_stock": 2408,
+    "lead_time_days": 2,
+    "daily_demand": 172,
+    "unit_cost": 50.0,
+    "revenue_per_unit": 134.48
+  },
+  "SKU003": {
+    "product": "O'Brien Men's Neoprene Life Vest",
+    "supplier": "SUP005",
+    "current_stock": 9322,
+    "safety_stock": 2212,
+    "lead_time_days": 2,
+    "daily_demand": 158,
+    "unit_cost": 49.98,
+    "revenue_per_unit": 134.55
+  },
+  "SKU004": {
+    "product": "Nike Men's Free 5.0+ Running Shoe",
+    "supplier": "SUP005",
+    "current_stock": 3800,
+    "safety_stock": 1400,
+    "lead_time_days": 2,
+    "daily_demand": 100,
+    "unit_cost": 99.99,
+    "revenue_per_unit": 270.83
+  },
+  "SKU005": {
+    "product": "Under Armour Girls' Toddler Spine Surge Runni",
+    "supplier": "SUP005",
+    "current_stock": 3268,
+    "safety_stock": 1204,
+    "lead_time_days": 2,
+    "daily_demand": 86,
+    "unit_cost": 39.99,
+    "revenue_per_unit": 107.45
+  },
+  "SKU006": {
+    "product": "Nike Men's CJ Elite 2 TD Football Cleat",
+    "supplier": "SUP005",
+    "current_stock": 3180,
+    "safety_stock": 840,
+    "lead_time_days": 2,
+    "daily_demand": 60,
+    "unit_cost": 129.99,
+    "revenue_per_unit": 116.81
+  },
+  "SKU007": {
+    "product": "Field & Stream Sportsman 16 Gun Fire Safe",
+    "supplier": "SUP005",
+    "current_stock": 2397,
+    "safety_stock": 658,
+    "lead_time_days": 2,
+    "daily_demand": 47,
+    "unit_cost": 399.98,
+    "revenue_per_unit": 359.42
+  },
+  "SKU008": {
+    "product": "Pelican Sunstream 100 Kayak",
+    "supplier": "SUP005",
+    "current_stock": 1302,
+    "safety_stock": 588,
+    "lead_time_days": 2,
+    "daily_demand": 42,
+    "unit_cost": 199.99,
+    "revenue_per_unit": 179.71
+  },
+  "SKU009": {
+    "product": "Diamondback Women's Serene Classic Comfort Bi",
+    "supplier": "SUP005",
+    "current_stock": 1332,
+    "safety_stock": 518,
+    "lead_time_days": 2,
+    "daily_demand": 37,
+    "unit_cost": 299.98,
+    "revenue_per_unit": 269.56
+  },
+  "SKU010": {
+    "product": "ENO Atlas Hammock Straps",
+    "supplier": "SUP005",
+    "current_stock": 64,
+    "safety_stock": 28,
+    "lead_time_days": 2,
+    "daily_demand": 2,
+    "unit_cost": 29.99,
+    "revenue_per_unit": 83.21
+  },
+  "SKU011": {
+    "product": "Nike Men's Comfort 2 Slide",
+    "supplier": "SUP005",
+    "current_stock": 60,
+    "safety_stock": 28,
+    "lead_time_days": 2,
+    "daily_demand": 2,
+    "unit_cost": 44.99,
+    "revenue_per_unit": 122.19
+  },
+  "SKU012": {
+    "product": "adidas Youth Germany Black/Red Away Match Soc",
+    "supplier": "SUP005",
+    "current_stock": 96,
+    "safety_stock": 28,
+    "lead_time_days": 2,
+    "daily_demand": 2,
+    "unit_cost": 70.0,
+    "revenue_per_unit": 194.39
+  },
+  "SKU013": {
+    "product": "Team Golf St. Louis Cardinals Putter Grip",
+    "supplier": "SUP001",
+    "current_stock": 72,
+    "safety_stock": 28,
+    "lead_time_days": 2,
+    "daily_demand": 2,
+    "unit_cost": 24.99,
+    "revenue_per_unit": 69.05
+  },
+  "SKU014": {
+    "product": "LIJA Women's Eyelet Sleeveless Golf Polo",
+    "supplier": "SUP005",
+    "current_stock": 80,
+    "safety_stock": 28,
+    "lead_time_days": 2,
+    "daily_demand": 2,
+    "unit_cost": 65.0,
+    "revenue_per_unit": 178.51
+  },
+  "SKU015": {
+    "product": "Glove It Women's Imperial Golf Glove",
+    "supplier": "SUP005",
+    "current_stock": 66,
+    "safety_stock": 28,
+    "lead_time_days": 2,
+    "daily_demand": 2,
+    "unit_cost": 19.99,
+    "revenue_per_unit": 55.11
+  },
+  "SKU016": {
+    "product": "adidas Men's F10 Messi TRX FG Soccer Cleat",
+    "supplier": "SUP005",
+    "current_stock": 104,
+    "safety_stock": 28,
+    "lead_time_days": 2,
+    "daily_demand": 2,
+    "unit_cost": 59.99,
+    "revenue_per_unit": 165.1
+  },
+  "SKU017": {
+    "product": "Glove It Imperial Golf Towel",
+    "supplier": "SUP005",
+    "current_stock": 76,
+    "safety_stock": 28,
+    "lead_time_days": 2,
+    "daily_demand": 2,
+    "unit_cost": 15.99,
+    "revenue_per_unit": 44.38
+  },
+  "SKU018": {
+    "product": "Glove It Women's Mod Oval 3-Zip Carry All Gol",
+    "supplier": "SUP005",
+    "current_stock": 98,
+    "safety_stock": 28,
+    "lead_time_days": 2,
+    "daily_demand": 2,
+    "unit_cost": 21.99,
+    "revenue_per_unit": 62.18
+  },
+  "SKU019": {
+    "product": "Bridgestone e6 Straight Distance NFL Carolina",
+    "supplier": "SUP005",
+    "current_stock": 114,
+    "safety_stock": 28,
+    "lead_time_days": 2,
+    "daily_demand": 2,
+    "unit_cost": 31.99,
+    "revenue_per_unit": 86.24
+  },
+  "SKU020": {
+    "product": "Columbia Men's PFG Anchor Tough T-Shirt",
+    "supplier": "SUP005",
+    "current_stock": 114,
+    "safety_stock": 28,
+    "lead_time_days": 2,
+    "daily_demand": 2,
+    "unit_cost": 30.0,
+    "revenue_per_unit": 82.66
+  }
+}

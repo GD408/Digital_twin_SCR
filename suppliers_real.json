@@ -1,0 +1,102 @@
+{
+  "SUP001": {
+    "name": "Pacific Asia Supplier Network",
+    "location": "Pacific Asia",
+    "products": [
+      "Sporting Goods",
+      "Cleats",
+      "Shop By Sport",
+      "Women's Apparel",
+      "Men's Footwear"
+    ],
+    "tier": 1,
+    "criticality": "HIGH",
+    "lead_time_days": 2,
+    "alternatives": [
+      "SUP002",
+      "SUP003",
+      "SUP004"
+    ],
+    "late_delivery_risk": 55.05
+  },
+  "SUP002": {
+    "name": "USCA Supplier Network",
+    "location": "USCA",
+    "products": [
+      "Electronics",
+      "Boxing & MMA",
+      "Cleats",
+      "Cardio Equipment",
+      "Shop By Sport"
+    ],
+    "tier": 1,
+    "criticality": "HIGH",
+    "lead_time_days": 2,
+    "alternatives": [
+      "SUP001",
+      "SUP003",
+      "SUP004"
+    ],
+    "late_delivery_risk": 54.8
+  },
+  "SUP003": {
+    "name": "Africa Supplier Network",
+    "location": "Africa",
+    "products": [
+      "Cardio Equipment",
+      "Shop By Sport",
+      "Trade-In",
+      "Electronics",
+      "Men's Footwear"
+    ],
+    "tier": 1,
+    "criticality": "HIGH",
+    "lead_time_days": 2,
+    "alternatives": [
+      "SUP001",
+      "SUP002",
+      "SUP004"
+    ],
+    "late_delivery_risk": 54.59
+  },
+  "SUP004": {
+    "name": "Europe Supplier Network",
+    "location": "Europe",
+    "products": [
+      "Cardio Equipment",
+      "Cleats",
+      "Women's Apparel",
+      "Shop By Sport",
+      "Trade-In"
+    ],
+    "tier": 1,
+    "criticality": "HIGH",
+    "lead_time_days": 2,
+    "alternatives": [
+      "SUP001",
+      "SUP002",
+      "SUP003"
+    ],
+    "late_delivery_risk": 55.21
+  },
+  "SUP005": {
+    "name": "LATAM Supplier Network",
+    "location": "LATAM",
+    "products": [
+      "Cardio Equipment",
+      "Cleats",
+      "Women's Apparel",
+      "Shop By Sport",
+      "Electronics"
+    ],
+    "tier": 1,
+    "criticality": "HIGH",
+    "lead_time_days": 2,
+    "alternatives": [
+      "SUP001",
+      "SUP002",
+      "SUP003"
+    ],
+    "late_delivery_risk": 54.36
+  }
+}
