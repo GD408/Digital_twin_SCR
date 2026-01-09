@@ -59,10 +59,12 @@ class AgentState(TypedDict):
     next_node: str
 
 class Router(BaseModel):
-    """Decide which agents should run next based on the user query."""
+    """Decide the next steps in the supply chain workflow."""
     next_nodes: List[Literal["RiskScout", "ImpactAnalyst", "LogisticsPlanner", "FINISH"]] = Field(
-        description="The list of nodes to activate. Use 'FINISH' only if no other agents are needed."
+        description="The specialists to call. Use 'FINISH' if you are answering the user directly or the task is done."
     )
+    reasoning: str = Field(description="Brief explanation of why these nodes were chosen.")
+    direct_response: str = Field(description="If no specialists are needed, write the response to the user here.")
 
 def risk_scout_node(state: AgentState):
     print("🔍 [RISK SCOUT] Running...")
@@ -79,7 +81,7 @@ def logistics_planner_node(state: AgentState):
     # Human-in-the-Loop Interrupt
     proposal = "IE PROPOSAL: Switch SKU-001 to Air Freight. Please authorize."
     decision = interrupt(f"\n{proposal}\nAuthorize? (yes/no): ")
-   
+    
     response = planner_executor.invoke({"messages": [HumanMessage(content=f"User approved: {decision}. Use tool for Air cost.")]})
     return {"messages": [AIMessage(content=f"PLAN FINALIZED: {response['messages'][-1].content}")]}
 # ============================================================================
@@ -87,18 +89,26 @@ def logistics_planner_node(state: AgentState):
 # ============================================================================
 def supervisor_node(state: AgentState):
     system_prompt = (
-        "You are the Supply Chain Orchestrator. Determine which specialists are needed.\n"
-        "You can call MULTIPLE specialists at once (e.g., ['RiskScout', 'ImpactAnalyst']).\n"
-        "If the query is purely risk assessment, call ['RiskScout'].\n"
-        "If the query is purely inventory impact, call ['ImpactAnalyst'].\n"
-        "If the query is purely about logistics, call ['LogisticsPlanner'].\n"
-        "If the task is done, return ['FINISH']."
+        "You are the Supply Chain Orchestrator. Your job is to manage specialists or answer the user.\n"
+        "1. If the user greets you or asks a general question, set next_nodes to ['FINISH'] and write a 'direct_response'.\n"
+        "2. If specialized work is needed (Risk, Inventory, Logistics), list the 'next_nodes'.\n"
+        "3. Once specialists have provided reports in the history, summarize their findings and set next_nodes to ['FINISH'].\n"
+        "Specialists: RiskScout (Weather/Ports), ImpactAnalyst (ERP/Inventory), LogisticsPlanner (Shipping costs)."
     )
-   
+    
     structured_llm = llm.with_structured_output(Router)
+    # Provide the full conversation history so it knows what has been done
     decision = structured_llm.invoke([SystemMessage(content=system_prompt)] + state["messages"])
-   
-    print(f"\n🧠 [SUPERVISOR] Decision: {decision.next_nodes}")
+    
+    print(f"\n🧠 [SUPERVISOR] Reasoning: {decision.reasoning}")
+    
+    # If the supervisor is finishing, we add its direct response to the message history
+    if "FINISH" in decision.next_nodes or not decision.next_nodes:
+        return {
+            "next_node": ["FINISH"], 
+            "messages": [AIMessage(content=decision.direct_response)]
+        }
+    
     return {"next_node": decision.next_nodes}
 
 builder = StateGraph(AgentState)
@@ -109,10 +119,13 @@ builder.add_node("LogisticsPlanner", logistics_planner_node)
 
 builder.add_edge(START, "supervisor")
 
-# Conditional routing based on the supervisor's decision
+# This helper handles the list of nodes returned by the supervisor
+def route_decision(state: AgentState):
+    return state["next_node"]
+
 builder.add_conditional_edges(
     "supervisor",
-    lambda x: x["next_node"], # This now returns a list, e.g., ["RiskScout", "ImpactAnalyst"]
+    route_decision,
     {
         "RiskScout": "RiskScout",
         "ImpactAnalyst": "ImpactAnalyst",
@@ -121,7 +134,6 @@ builder.add_conditional_edges(
     }
 )
 
-# All agents return to supervisor for the next instruction
 builder.add_edge("RiskScout", "supervisor")
 builder.add_edge("ImpactAnalyst", "supervisor")
 builder.add_edge("LogisticsPlanner", "supervisor")
@@ -135,27 +147,27 @@ config = {"configurable": {"thread_id": "IE_DYNAMIC_ROUTING"}, "recursion_limit"
 
 while True:
     state = app.get_state(config)
-   
+    
     # CASE A: The graph is waiting for Human-in-the-loop (interrupt)
     if state.next:
         decision = input("\n[MANAGER APPROVAL / Type 'exit' to stop]: ")
-       
+        
         # FIX: Check for exit here!
         if decision.lower() in ["quit", "exit"]:
             print("Shutting down Command Center...")
             break
-           
+            
         for event in app.stream(Command(resume=decision), config):
             for node, val in event.items():
-                if "messages" in val:
+                if "messages" in val: 
                     print(f"[{node.upper()}]: {val['messages'][-1].content}")
-   
+    
     # CASE B: The graph is idle, waiting for a new user query
     else:
         query = input("\nYou: ")
-        if query.lower() in ["quit", "exit"]:
+        if query.lower() in ["quit", "exit"]: 
             break
         for event in app.stream({"messages": [HumanMessage(content=query)]}, config):
             for node, val in event.items():
-                if "messages" in val:
+                if "messages" in val: 
                     print(f"[{node.upper()}]: {val['messages'][-1].content}")
